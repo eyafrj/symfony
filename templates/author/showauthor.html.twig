@@ -1,0 +1,33 @@
+{% for author in a %}
+{% if author is empty %}
+
+<p> il n ya pas de contenu </p>
+{% else %}
+  <p> identifiant: {{ author['id']  }}</p>
+     //<p>Name: {{ author['username'] |upper }}</p>
+     <a href="{{path('d',{'id':author['username']})}}"> details </a> 
+       <p>lemail: {{ author['email']  }}</p>
+        <p>nb_Books: {{ author['nb_books']  }}</p>
+     <img src="{{author.picture}}" alt=""> 
+    
+     {% endif %}
+{% endfor %}
+<p>le nombre des books </p>
+{% set s=0 %}
+{% for author in a %}
+   {% set s = s + author['nb_books'] %}
+{% endfor %}
+<p>Nombre total de livres : {{ s }}</p>
+
+<p> le nombre des auteurs</p>
+
+{% set p=0 %}
+{% for author in a %}
+   {% set p = p + 1 %}
+{% endfor %}
+<p>Nombre total de autheurs : {{ p }} </p>
+
+<a href="{{ path('showAuther', {'name': 'eya'}) }}">lien</a>
+
+<a href="{{ path('showAuther', {'name': 'eya'}) }}">
+    <button>Participer</button>
